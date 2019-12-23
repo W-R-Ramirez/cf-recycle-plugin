@@ -115,11 +115,11 @@ func (cmd *CfRecycleCmd) restartInstance(cliConnection plugin.CliConnection, arg
 	if _, err := cliConnection.CliCommandWithoutTerminalOutput(restartArgs...); err == nil {
 		for state != "down" {
 			state = cmd.getInstanceStatus(cliConnection, i, args[1])
-			time.Sleep(10 * time.Second)
+			time.Sleep(5 * time.Second)
 		}
 		for state != "running" {
 			state = cmd.getInstanceStatus(cliConnection, i, args[1])
-			time.Sleep(10 * time.Second)
+			time.Sleep(5 * time.Second)
 		}
 	}
 }
